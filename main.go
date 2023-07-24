@@ -140,7 +140,7 @@ func main() {
 		panic(err)
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS servers (timestamp INTEGER, name BLOB, players INTEGER, maxPlayers INTEGER);")
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS servers (timestamp INTEGER, ip STRING, name BLOB, players INTEGER, maxPlayers INTEGER);")
 	if err != nil {
 		panic(err)
 	}
@@ -154,6 +154,6 @@ func main() {
 
 		info := infoResult.Value
 
-		db.Exec("INSERT INTO servers VALUES (?, ?, ?, ?)", timestamp, info.ServerNameRaw, info.Players, info.MaxPlayers)
+		db.Exec("INSERT INTO servers VALUES (?, ?, ?, ?, ?)", timestamp, info.IP, info.ServerNameRaw, info.Players, info.MaxPlayers)
 	}
 }

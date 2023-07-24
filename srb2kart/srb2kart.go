@@ -78,6 +78,7 @@ func writeChecksum(data []byte) []byte {
 }
 
 type ServerInfo struct {
+	IP            string
 	ServerNameRaw []byte
 	Players       int
 	MaxPlayers    int
@@ -133,6 +134,7 @@ func GetServerInfo(address string) (ServerInfo, error) {
 	}
 
 	return ServerInfo{
+		IP:            address,
 		ServerNameRaw: spliceAtNull(serverInfoResponse.ServerName[:]),
 		Players:       int(serverInfoResponse.NumberOfPlayer),
 		MaxPlayers:    int(serverInfoResponse.MaxPlayer),
