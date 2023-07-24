@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"os"
 	"strconv"
 	"time"
 
@@ -136,7 +135,7 @@ func main() {
 	}
 
 	// Setup SQLite Database
-	db, err := sql.Open("sqlite3", os.Getenv("DATABASE_PATH"))
+	db, err := sql.Open("sqlite3", *databasePath)
 	if err != nil {
 		panic(err)
 	}
